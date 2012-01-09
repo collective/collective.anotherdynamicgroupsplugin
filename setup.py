@@ -7,7 +7,7 @@ version = '0.1dev'
 def read(*paths):
     return open(os.path.join(*paths), 'r').read()
 
-long_description = ''
+long_description = read('collective', 'anotherdynamicgroupsplugin', 'README.txt')
 
 setup(name='collective.anotherdynamicgroupsplugin',
       version=version,

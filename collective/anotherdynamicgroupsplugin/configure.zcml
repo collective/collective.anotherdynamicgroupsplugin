@@ -4,5 +4,7 @@
     i18n_domain="collective.anotherdynamicgroupsplugin">
        
    <includeDependencies package="." /> 
+   
+   <include file="profiles.zcml" />   
          
 </configure>

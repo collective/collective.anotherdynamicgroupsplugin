@@ -1,0 +1,27 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup" 
+    i18n_domain="collective.anotherdynamicgroupsplugin">
+        
+    <genericsetup:registerProfile
+        name="default"
+        title="collective.anotherdynamicgroupsplugin"
+        directory="profiles/default"
+        description="collective.anotherdynamicgroupsplugin"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+     />
+    
+    <genericsetup:importStep
+        name="collective.anotherdynamicgroupsplugin.import_various"
+        title="collective.anotherdynamicgroupsplugin.import_various"
+        description="collective.anotherdynamicgroupsplugin.import_various"
+        handler="collective.anotherdynamicgroupsplugin.setuphandlers.import_various">
+        
+        <depends name="actions"/>
+        <depends name="workflow"/>
+        <depends name="typeinfo"/>
+        <depends name="toolset"/>
+        
+    </genericsetup:importStep>    
+    
+</configure>    

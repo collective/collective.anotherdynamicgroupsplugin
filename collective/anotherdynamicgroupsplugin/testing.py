@@ -11,7 +11,7 @@ class PackageLayer(PloneSandboxLayer):
         self.loadZCML(package=collective.anotherdynamicgroupsplugin)
     
     def setUpPloneSite(self, portal):
-        pass
+        self.applyProfile(portal, '%s:default' % PACKAGE_NAME)
     
                 
 

@@ -4,6 +4,7 @@ import doctest
 from plone.testing import layered
 from ..testing import INTEGRATION_TESTING
 import collective.anotherdynamicgroupsplugin
+from .util import add_user
 
 def _globalize_layer_resources(test, resources):
     for k in resources:
@@ -16,11 +17,11 @@ def _setUp(test):
 def _tearDown(test):
     pass
     
-_globs = {} 
+_globs = {'add_user': add_user} 
 
 _options = doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE | doctest.REPORT_ONLY_FIRST_FAILURE
 
-def create_docfile_suite(filename, package):
+def _create_docfile_suite(filename, package):
     return layered(
         doctest.DocFileSuite(
             filename, 
@@ -37,6 +38,6 @@ def create_docfile_suite(filename, package):
 def test_suite():
     suite = unittest.TestSuite()
     suite.addTests([
-        create_docfile_suite('README.txt', package=collective.anotherdynamicgroupsplugin),
+        _create_docfile_suite('README.txt', package=collective.anotherdynamicgroupsplugin),
     ])
     return suite
