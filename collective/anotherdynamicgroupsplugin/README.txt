@@ -1,0 +1,6 @@
+collective.anotherdynamicgroupsplugin
+=====================================
+
+.. contents::
+
+
