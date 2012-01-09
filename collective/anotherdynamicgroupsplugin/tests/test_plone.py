@@ -15,20 +15,42 @@ class PloneTestCase(unittest.TestCase):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
         
-    def test_should_not_break_usergroup_groupprefs(self):
+    def test_should_not_break_usergroup_groupprefs_view(self):
+        """Regression test: bug was making @@usergroup-groupprefs break."""
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         
-        add_virtual_group('group1')
+        add_virtual_group('group1', 'Group One')
         
         html = self._render_view('usergroup-groupprefs')
+        self.assertTrue('group1' in html)
+        self.assertTrue('Group One' in html)
         
-        f = open('/tmp/a.html', 'w')
-        f.write(html)
-        f.close()
+    def test_should_not_break_sharing_view(self):
+        """Regression test: bug was making @@usergroup-groupprefs break."""
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        
+        add_virtual_group('group1', 'Group One')
+        
+        html = self._render_view('sharing')
+        self.assertFalse('group1' in html)
+        self.assertFalse('Group One' in html)        
+        
+        parameters = {
+            'search_term': 'Group One', 
+        }
+        
+        html = self._render_view('sharing', **parameters)
+        
+        self.assertTrue('group1' in html)
+        self.assertTrue('Group One' in html)        
+
     
-    def _render_view(self, view):
-        view_url = self.portal.absolute_url() + '/@@' + view
+    def _render_view(self, view, **kwargs):
+        view_url = self.portal.absolute_url() + '/@@' + view        
         self.request.set('URL', view_url)
         self.request.set('ACTUAL_URL', view_url)        
+        
+        for (k, v) in kwargs.iteritems():
+            self.request.form[k] = v
         
         return self.portal.unrestrictedTraverse('@@' + view)()        

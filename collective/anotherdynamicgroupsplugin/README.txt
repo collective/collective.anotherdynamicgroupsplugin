@@ -10,6 +10,11 @@ for each of them Membership is established via a predicate, expressed as a TALES
 This package aims to provide a similar functionality, but in a different way. Once the 
 "Another Dynamic Groups Plugin" is installed it will lookup named multi-adapters for the user and 
 the request. Each adapter will provide a sequence of groups which the principal is a member of.
+It's similar to `borg.localrole`_ but for groups.
+
+This plugin is also a "groups introspection plugin". It means the "virtual" groups created are 
+shown in the Plone management UI for groups. Actually, if we don't do that the 
+``@@usergroup-userprefs`` view breaks.
 
 Installation
 ------------
@@ -80,8 +85,8 @@ Now let's check if the groups are correctly assigned to each user::
     >>> sorted(user3.getGroups())
     ['AuthenticatedUsers', 'group1', 'group3']
 
-
-
+.. References
+.. _`borg.localrole`: http://pypi.python.org/pypi/borg.localrole
         
 
 
