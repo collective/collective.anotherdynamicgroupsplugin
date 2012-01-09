@@ -4,7 +4,6 @@ import doctest
 from plone.testing import layered
 from ..testing import INTEGRATION_TESTING
 import collective.anotherdynamicgroupsplugin
-from .util import add_user
 
 def _globalize_layer_resources(test, resources):
     for k in resources:
@@ -17,7 +16,7 @@ def _setUp(test):
 def _tearDown(test):
     pass
     
-_globs = {'add_user': add_user} 
+_globs = {} 
 
 _options = doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE | doctest.REPORT_ONLY_FIRST_FAILURE
 
