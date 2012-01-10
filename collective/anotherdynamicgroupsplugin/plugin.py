@@ -6,14 +6,11 @@ from Products.PluggableAuthService.plugins.DynamicGroupsPlugin import DynamicGro
 from Products.PluggableAuthService.utils import classImplements
 from zope.component import getAdapters
 from zope.globalrequest import getRequest
-
-
-
-
     
 class AnotherDynamicGroupsPlugin(DynamicGroupsPlugin):
     
     def getGroupsForPrincipal(self, principal, request=None):        
+        """Override `DynamicGroupsPlugin`."""
         if request is None:
             request = getRequest()
                 

@@ -12,8 +12,8 @@ This package aims to provide a similar functionality, but in a different way. On
 the request. Each adapter will provide a sequence of groups which the principal is a member of.
 It's similar to `borg.localrole`_ but for groups.
 
-This plugin is also a "groups introspection plugin". It means the "virtual" groups created are 
-shown in the Plone management UI for groups. Actually, if we don't do that the 
+The provided plugin is also a "groups introspection plugin". It means the "virtual" groups created 
+are shown in the Plone management UI for groups. Actually, if we don't do that the 
 ``@@usergroup-userprefs`` view breaks.
 
 Installation
@@ -26,7 +26,7 @@ Usage
 -----
 
 Once the add-on is installed you can add "virtual" groups. These will be the groups dynamically
-assigned to the users by the plugin. It also can be done through the ZMI::
+assigned to the users by the plugin. This can also be done through the ZMI::
 
     >>> from collective.anotherdynamicgroupsplugin.util import add_virtual_group
     >>> add_virtual_group(group_id='group1', title='Group 1') 
@@ -55,7 +55,11 @@ Now we create and register the named adapters. The first one just makes everybod
     ...         self.request = request
     ...     def __call__(self):
     ...         return ['group1']
-    >>> provideAdapter(ProvideGroup1ToAll, adapts=(IBasicUser, IHTTPRequest), name='provide_group1_to_all')
+    >>> provideAdapter(
+    ...     ProvideGroup1ToAll, 
+    ...     adapts=(IBasicUser, IHTTPRequest), 
+    ...     name=ProvideGroup1ToAll.__name__
+    ... )
     
 The second adapter makes the user member of the group with correspondent name::
 
@@ -69,7 +73,11 @@ The second adapter makes the user member of the group with correspondent name::
     ...             return []
     ...         number = self.user.getId()[-1]
     ...         return ['group' + number]    
-    >>> provideAdapter(ProvideCorrespondentGroup, adapts=(IBasicUser, IHTTPRequest), name='provide_correspondent_group')        
+    >>> provideAdapter(
+    ...     ProvideCorrespondentGroup, 
+    ...     adapts=(IBasicUser, IHTTPRequest), 
+    ...     name=ProvideCorrespondentGroup.__name__
+    ... )
 
 Now let's check if the groups are correctly assigned to each user::
 
@@ -84,6 +92,20 @@ Now let's check if the groups are correctly assigned to each user::
     >>> user3 = mtool.getMemberById('user3')    
     >>> sorted(user3.getGroups())
     ['AuthenticatedUsers', 'group1', 'group3']
+    
+Test clean-up::    
+    
+    >>> from zope.component import getGlobalSiteManager
+    >>> sm = getGlobalSiteManager()
+    >>> for a in (ProvideGroup1ToAll, ProvideCorrespondentGroup):
+    ...     removed = sm.unregisterAdapter(
+    ...         provided=IGroupProvider, 
+    ...         required=(IBasicUser, IHTTPRequest), 
+    ...         name=a.__name__
+    ...     )
+    >>> list(sm.registeredAdapters())
+    []
+    
 
 .. References
 .. _`borg.localrole`: http://pypi.python.org/pypi/borg.localrole

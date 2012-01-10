@@ -13,6 +13,9 @@ def import_various(context):
     acl_users = getToolByName(portal, 'acl_users')
     
     if PLUGIN_ID not in acl_users.objectIds():        
-        plugin = AnotherDynamicGroupsPlugin(id=PLUGIN_ID, title=PLUGIN_ID)
+        plugin = AnotherDynamicGroupsPlugin(
+            id=PLUGIN_ID, 
+            title=PLUGIN_ID.replace('-', ' ').title()
+        )
         acl_users._setObject(PLUGIN_ID, plugin)
         activatePluginInterfaces(portal, PLUGIN_ID, StringIO())
