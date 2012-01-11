@@ -1,2 +1,2 @@
 include *.txt *.py *.cfg
-recursive-include collective *.txt *.py
+recursive-include collective *.txt *.py *.xml *.zcml
