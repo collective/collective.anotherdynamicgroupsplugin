@@ -42,6 +42,6 @@ def _create_docfile_suite(filename, package):
 def test_suite():
     suite = unittest.TestSuite()
     suite.addTests([
-        _create_docfile_suite('README.txt', package=collective.anotherdynamicgroupsplugin),
+        _create_docfile_suite('../../README.txt', package=collective.anotherdynamicgroupsplugin),
     ])
     return suite
