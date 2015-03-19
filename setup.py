@@ -14,15 +14,17 @@ long_description = read('collective', 'anotherdynamicgroupsplugin', 'README.txt'
 setup(
     name='collective.anotherdynamicgroupsplugin',
     version=version,
-    description='',
+    description='Another way to define dynamic user groups in Plone.',
     long_description=long_description,
     # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         'Framework :: Plone',
+        'Framework :: Plone :: 4.3',
         'Programming Language :: Python',
+        'Programming Language :: Python :: 2.7',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    keywords='',
+    keywords='plone pas groups',
     author='Rafael Oliveira',
     author_email='rafaelbco@gmail.com',
     url='http://github.com/collective/collective.anotherdynamicgroupsplugin',
@@ -47,4 +49,5 @@ setup(
     [z3c.autoinclude.plugin]
     target = plone
     """,
+    test_suite='tests',
 )
