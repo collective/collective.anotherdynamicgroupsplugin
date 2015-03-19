@@ -1,6 +1,8 @@
 #coding=utf8
 from .config import PACKAGE_NAME
-from plone.app.testing import IntegrationTesting, PLONE_FIXTURE, PloneSandboxLayer
+from plone.app.testing import IntegrationTesting
+from plone.app.testing import PLONE_FIXTURE
+from plone.app.testing import PloneSandboxLayer
 
 
 class PackageLayer(PloneSandboxLayer):
@@ -12,8 +14,11 @@ class PackageLayer(PloneSandboxLayer):
         self.loadZCML(package=collective.anotherdynamicgroupsplugin)
 
     def setUpPloneSite(self, portal):
-        self.applyProfile(portal, '%s:default' % PACKAGE_NAME)
+        self.applyProfile(portal, '{}:default'.format(PACKAGE_NAME))
 
 
 FIXTURE = PackageLayer()
-INTEGRATION_TESTING = IntegrationTesting(bases=(FIXTURE,), name='%s:Integration' % PACKAGE_NAME)
+INTEGRATION_TESTING = IntegrationTesting(
+    bases=(FIXTURE,),
+    name='{}:Integration'.format(PACKAGE_NAME)
+)
