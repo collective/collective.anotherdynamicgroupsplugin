@@ -1,0 +1,37 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    i18n_domain="trt3.usuarios">
+
+
+    <monkey:patch
+        description="Make dynamic groups displayable by the Plone UI."
+        class="Products.PluggableAuthService.plugins.DynamicGroupsPlugin.DynamicGroupDefinition"
+        original="getRoles"
+        ignoreOriginal="true"
+        replacement=".groupdefinition.getRoles"
+        docstringWarning="true"
+        preservedoc="false"
+    />
+
+    <monkey:patch
+        description="Make dynamic groups displayable by the Plone UI."
+        class="Products.PluggableAuthService.plugins.DynamicGroupsPlugin.DynamicGroupDefinition"
+        original="getUserName"
+        ignoreOriginal="true"
+        replacement=".groupdefinition.getUserName"
+        docstringWarning="true"
+        preservedoc="false"
+    />
+
+    <monkey:patch
+        description="Make dynamic groups displayable by the Plone UI."
+        class="Products.PluggableAuthService.plugins.DynamicGroupsPlugin.DynamicGroupDefinition"
+        original="getName"
+        ignoreOriginal="true"
+        replacement=".groupdefinition.getName"
+        docstringWarning="true"
+        preservedoc="false"
+    />
+
+</configure>

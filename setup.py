@@ -33,6 +33,7 @@ setup(name='collective.anotherdynamicgroupsplugin',
         'Plone',
         'z3c.autoinclude',
         'plone.api',
+        'collective.monkeypatcher',
       ],
       
       extras_require = {

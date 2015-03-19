@@ -1,13 +1,18 @@
 #coding=utf8
+u"""Monkey patches to make dynamic groups displayable by the Plone UI.
+
+See: monkey.zcml
+"""
 from Products.PluggableAuthService.interfaces.plugins import IRolesPlugin
-from Products.PluggableAuthService.plugins.DynamicGroupsPlugin import DynamicGroupDefinition
 from plone import api
 
-# Here we monkey-patch some methods into `DynamicGroupDefinition` so groups can be displayed by
-# the Plone UI.
 
-DynamicGroupDefinition.getUserName = lambda self: self.id
-DynamicGroupDefinition.getName = lambda self: self.id
+def getUserName(self):
+    return self.id
+
+
+def getName(self):
+    return self.id
 
 
 def getRoles(self):
@@ -20,5 +25,3 @@ def getRoles(self):
         roles.update(rolemaker.getRolesForPrincipal(self))
 
     return list(roles)
-
-DynamicGroupDefinition.getRoles = getRoles
