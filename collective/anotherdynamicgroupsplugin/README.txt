@@ -16,6 +16,11 @@ The provided plugin is also a "groups introspection plugin". It means the "virtu
 are shown in the Plone management UI for groups. Actually, if we don't do that the
 ``@@usergroup-userprefs`` view breaks.
 
+Compatibility
+-------------
+
+Current version was tested with Plone 4.3. Probably it will work for any version in the 4.x series.
+
 Installation
 ------------
 
