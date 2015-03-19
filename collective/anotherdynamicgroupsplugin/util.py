@@ -1,11 +1,12 @@
-from zope.app.component.hooks import getSite
+#coding=utf8
 from .config import PLUGIN_ID
-from Products.CMFCore.utils import getToolByName
+from plone import api
+
 
 def get_plugin():
-    portal = getSite()
-    pas = getToolByName(portal, 'acl_users')
+    pas = api.portal.get_tool('acl_users')
     return pas[PLUGIN_ID]
+
 
 def add_virtual_group(group_id, title=None):
     plugin = get_plugin()

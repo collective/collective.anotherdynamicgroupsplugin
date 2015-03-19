@@ -32,6 +32,7 @@ setup(name='collective.anotherdynamicgroupsplugin',
         'setuptools',
         'Plone',
         'z3c.autoinclude',
+        'plone.api',
       ],
       
       extras_require = {
