@@ -5,7 +5,7 @@ Changelog
 ~~~~~~~~~~~~~~~~
 
 - Plone 4.3 compatibility.
-- PEP8 / pyroma.
+- Added documentation stating that membership to regular (non-virtual) groups can also be provided by group providers.
 
 
 0.3 (2012-01-11)
