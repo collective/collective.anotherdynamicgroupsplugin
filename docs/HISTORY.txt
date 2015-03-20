@@ -1,8 +1,8 @@
 Changelog
 ---------
 
-0.4 (unreleased)
-~~~~~~~~~~~~~~~~
+1.0.0 (2015-03-20)
+~~~~~~~~~~~~~~~~~~
 
 - Plone 4.3 compatibility.
 - Added documentation stating that membership to regular (non-virtual) groups can also be provided by group providers.
