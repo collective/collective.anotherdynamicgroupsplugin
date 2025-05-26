@@ -26,4 +26,3 @@ def uninstall(context):
     plugins = acl_users.objectIds()
     if PLUGIN_ID in plugins:
         acl_users.manage_delObjects([PLUGIN_ID])
-

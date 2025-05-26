@@ -35,7 +35,8 @@ class TestSetup(unittest.TestCase):
     def test_plugin_added(self):
         """Test that IBrowserLayer is removed."""
         from collective.anotherdynamicgroupsplugin import PLUGIN_ID
-        self.assertIn("PLUGIN_ID", self.portal.acl_users.objectIds())
+
+        self.assertIn(PLUGIN_ID, self.portal.acl_users.objectIds())
 
 
 class TestUninstall(unittest.TestCase):
@@ -63,4 +64,5 @@ class TestUninstall(unittest.TestCase):
     def test_plugin_added(self):
         """Test that IBrowserLayer is removed."""
         from collective.anotherdynamicgroupsplugin import PLUGIN_ID
+
         self.assertNotIn(PLUGIN_ID, self.portal.acl_users.objectIds())
