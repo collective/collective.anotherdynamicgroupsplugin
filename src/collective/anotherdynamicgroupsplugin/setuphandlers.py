@@ -21,3 +21,9 @@ def post_install(context):
 def uninstall(context):
     """Uninstall script"""
     # Do something at the end of the uninstallation of this package.
+
+    acl_users = api.portal.get_tool("acl_users")
+    plugins = acl_users.objectIds()
+    if PLUGIN_ID in plugins:
+        acl_users.manage_delObjects([PLUGIN_ID])
+
