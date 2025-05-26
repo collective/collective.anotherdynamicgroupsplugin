@@ -50,6 +50,7 @@ setup(
     zip_safe=False,
     python_requires=">=3.9",
     install_requires=[
+        "collective.monkeypatcher",
         "setuptools",
         "plone.api",
         "Products.CMFCore",

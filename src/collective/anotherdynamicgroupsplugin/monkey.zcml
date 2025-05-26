@@ -4,6 +4,7 @@
     i18n_domain="collective.anotherdynamicgroupsplugin"
     >
 
+  <include package="collective.monkeypatcher" />
 
   <monkey:patch
       original="getRoles"
