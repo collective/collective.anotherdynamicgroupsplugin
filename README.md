@@ -80,7 +80,7 @@ register the full adapter in python code:
 `configure.zcml`
 
 ``` xml
-    <!-- register the named adpaters in your configure.zcml -->
+    <!-- register the named adapters in your configure.zcml -->
     <adapter factory=".dynamic_groups.ProvideGroup1ToAll" name="ProvideGroup1ToAll" />
 ```
 
