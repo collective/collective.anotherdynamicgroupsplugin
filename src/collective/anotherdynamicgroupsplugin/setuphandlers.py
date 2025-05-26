@@ -5,9 +5,9 @@ from plone import api
 from Products.PlonePAS.setuphandlers import activatePluginInterfaces
 
 
-def import_various(context):
+def post_install(context):
 
-    portal = context.getSite()
+    portal = api.portal.get()
     acl_users = api.portal.get_tool("acl_users")
 
     if PLUGIN_ID not in acl_users.objectIds():

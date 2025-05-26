@@ -10,6 +10,7 @@
       description="collective.anotherdynamicgroupsplugin"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/default"
+      post_handler=".setuphandlers.post_install"
       />
 
   <genericsetup:registerProfile
@@ -20,20 +21,5 @@
       directory="profiles/uninstall"
       post_handler=".setuphandlers.uninstall"
       />
-
-
-  <genericsetup:importStep
-      name="collective.anotherdynamicgroupsplugin.import_various"
-      title="collective.anotherdynamicgroupsplugin.import_various"
-      description="collective.anotherdynamicgroupsplugin.import_various"
-      handler="collective.anotherdynamicgroupsplugin.setuphandlers.import_various"
-      >
-
-    <depends name="actions" />
-    <depends name="workflow" />
-    <depends name="typeinfo" />
-    <depends name="toolset" />
-
-  </genericsetup:importStep>
 
 </configure>
