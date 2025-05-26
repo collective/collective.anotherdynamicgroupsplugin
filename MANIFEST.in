@@ -1,5 +1,28 @@
-recursive-include collective *
-recursive-include docs *
-include *
+graft src/collective
 global-exclude *.pyc
+
+recursive-include sass *
+recursive-include jinja *
+recursive-include resources *
+recursive-include docs *
+recursive-include src *.py
+
+include pyproject.toml
+include .coveragerc
+include mx.ini
+include CHANGES.md
+include CONTRIBUTORS.md
+include package.json
+include webpack.config.js
+include yarn.lock
+
+recursive-exclude news *
+
+exclude *.testing
+exclude *.development
+exclude tox.ini
+exclude *.txt
+exclude .gitlab-ci.yml
+exclude news
+
 
