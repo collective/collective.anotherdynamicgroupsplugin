@@ -1,0 +1,3 @@
+refactoring package for use in Plone 6 / Python 3
+move doctests to integration tests
+make addon uninstallable @1letter

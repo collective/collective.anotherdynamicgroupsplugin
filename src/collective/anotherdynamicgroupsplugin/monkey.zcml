@@ -1,0 +1,39 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    i18n_domain="collective.anotherdynamicgroupsplugin"
+    >
+
+  <include package="collective.monkeypatcher" />
+
+  <monkey:patch
+      original="getRoles"
+      replacement=".groupdefinition.getRoles"
+      class="Products.PluggableAuthService.plugins.DynamicGroupsPlugin.DynamicGroupDefinition"
+      preservedoc="false"
+      docstringWarning="true"
+      description="Make dynamic groups displayable by the Plone UI."
+      ignoreOriginal="true"
+      />
+
+  <monkey:patch
+      original="getUserName"
+      replacement=".groupdefinition.getUserName"
+      class="Products.PluggableAuthService.plugins.DynamicGroupsPlugin.DynamicGroupDefinition"
+      preservedoc="false"
+      docstringWarning="true"
+      description="Make dynamic groups displayable by the Plone UI."
+      ignoreOriginal="true"
+      />
+
+  <monkey:patch
+      original="getName"
+      replacement=".groupdefinition.getName"
+      class="Products.PluggableAuthService.plugins.DynamicGroupsPlugin.DynamicGroupDefinition"
+      preservedoc="false"
+      docstringWarning="true"
+      description="Make dynamic groups displayable by the Plone UI."
+      ignoreOriginal="true"
+      />
+
+</configure>

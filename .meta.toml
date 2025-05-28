@@ -1,0 +1,15 @@
+# Generated from:
+# https://github.com/plone/meta/tree/main/src/plone/meta/default
+# See the inline comments on how to expand/tweak this configuration file
+[meta]
+template = "default"
+commit-id = "2.0.1.dev0"
+
+
+[pyproject]
+dependencies_ignores = "['plone.testing','zest.releaser','zestreleaser.towncrier','zope.testrunner']"
+
+
+[tox]
+use_mxdev = false
+test_matrix = { "6.1" = ["3.13", "3.10"], "6.0" = ["3.13", "3.9"] }

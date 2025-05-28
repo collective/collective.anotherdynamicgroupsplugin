@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.anotherdynamicgroupsplugin"
+    >
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.anotherdynamicgroupsplugin"
+      description="collective.anotherdynamicgroupsplugin"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/default"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="ollective.anotherdynamicgroupsplugin (uninstall)"
+      description="Uninstalls the ollective.anotherdynamicgroupsplugin add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/uninstall"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+</configure>
